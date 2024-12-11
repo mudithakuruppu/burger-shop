@@ -43,6 +43,26 @@ function homePage() {
               <li class="signup"><button onclick="loadCart()">Cart</button></li>
           </ul>
       </div>
+
+    
+    <div class="carousel-container">
+        <div class="carousel-images">
+            <img src="imgs/cheese-burger.jpg" alt="Image 1">
+            <img src="imgs/veggie-burger.jpg" alt="Image 2">
+            <img src="imgs/classic-burger.jpg" alt="Image 3">
+        </div>
+
+        <!-- Navigation buttons -->
+        <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
+        <button class="next" onclick="changeSlide(1)">&#10095;</button>
+
+        <!-- Dots for navigation -->
+        <div class="dots-container">
+            <span class="dot" onclick="currentSlide(0)"></span>
+            <span class="dot" onclick="currentSlide(1)"></span>
+            <span class="dot" onclick="currentSlide(2)"></span>
+        </div>
+    </div>
     </div>
     <div class="products-section">
       <h1 class="section-title">Our Delicious Burgers</h1>
@@ -234,3 +254,44 @@ function checkout() {
   updateOrderSummary();
 }
 
+// image carosol 
+
+let currentIndex = 0;
+        const images = document.querySelectorAll(".carousel-images img");
+        const dots = document.querySelectorAll(".dot");
+
+        function changeSlide(direction) {
+            currentIndex += direction;
+            if (currentIndex < 0) {
+                currentIndex = images.length - 1;
+            }
+            if (currentIndex >= images.length) {
+                currentIndex = 0;
+            }
+            updateCarousel();
+        }
+
+        function currentSlide(index) {
+            currentIndex = index;
+            updateCarousel();
+        }
+
+        function updateCarousel() {
+            const offset = -currentIndex * 100;
+            document.querySelector(".carousel-images").style.transform = `translateX(${offset}%)`;
+
+            dots.forEach((dot, index) => {
+                dot.classList.remove("active");
+                if (index === currentIndex) {
+                    dot.classList.add("active");
+                }
+            });
+        }
+
+        // Auto slide every 3 seconds
+        setInterval(() => {
+            changeSlide(1);
+        }, 1000);
+
+        // Initialize the carousel
+        updateCarousel();

@@ -1,0 +1,478 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: poppins;
+}
+
+img {
+  vertical-align: middle;
+  width: 250px;
+  height: auto;
+}
+
+.headerarea {
+  
+  background-color: rgb(200, 231, 239);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding-block: 10px;
+  
+  
+}
+
+/* Styling for the navigation links container */
+.navlinks, .login {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+}
+
+/* Styling for individual navigation items */
+.navlinks li, .login li {
+  margin: 0 15px;
+}
+
+/* Styling for buttons inside nav */
+button {
+  background-color: #ff6f61;
+  border: none;
+  color: white;
+  font-size: 16px;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+/* Change background on button hover */
+button:hover {
+  background-color: #e55b4a;
+}
+
+/* Styling for regular navigation links */
+.navlinks a {
+  color: #333;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 600;
+  padding: 10px 20px;
+  border-radius: 4px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Add hover effect for links */
+.navlinks a:hover {
+  background-color: #ff6f61;
+  color: white;
+}
+
+/* Styling for the login and cart section */
+.login a {
+  color: #ff6f61;
+  font-size: 18px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+/* Hover effect for login */
+.login a:hover {
+  color: #e55b4a;
+}
+
+/* Style for the Cart button with dynamic cart count */
+button#cart-button {
+  position: relative;
+}
+
+button#cart-button::after {
+  content: attr(data-cart-count);
+  position: absolute;
+  top: -5px;
+  right: -10px;
+  background-color: red;
+  color: white;
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+/* Styling for the hover effects on both nav and login items */
+.navlinks a:hover, .login a:hover, button:hover {
+  transform: translateY(-3px);
+}
+
+
+/* Products Section */
+.products-section {
+  padding: 20px;
+  background-color: #f8f8f8;
+  text-align: center;
+}
+
+.section-title {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.products-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.product-card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 300px;
+  padding: 15px;
+  text-align: center;
+  transition: transform 0.3s;
+}
+
+.product-card:hover {
+  transform: scale(1.05);
+}
+
+.product-card img {
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+.product-card h3 {
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.product-card p {
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.price {
+  font-size: 1.2rem;
+  color: #000000;
+  font-weight: bold;
+}
+
+.add-to-cart {
+  background-color: #ff5722;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.add-to-cart:hover {
+  background-color: #e64a19;
+}
+
+.cart_card {
+  border: 1px solid red;
+  padding: 1rem;
+  max-width: 250px;
+}
+
+.cart-section * + * {
+  margin-block-start: 1rem;
+}
+
+/*-------------- cart page ------------*/
+.cart{
+  margin: 0;
+  padding: 0;
+  margin-left: 20px;
+}
+
+/* Body Styling */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9;
+  color: #333;
+  line-height: 1.6;
+  padding: 20px;
+}
+
+/* Header */
+header {
+  text-align: center;
+  padding: 20px 0;
+  background-color: #ffcc00;
+  border-radius: 5px;
+}
+
+.hname {
+  font-size: 2rem;
+  color: #333;
+}
+
+/* Main Content Layout */
+main {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+/* Shopping Section */
+.shopping {
+  flex: 2;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.cart-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #ddd;
+  padding: 10px 0;
+}
+
+.cart-card img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.item-details {
+  flex: 1;
+  margin-left: 10px;
+}
+
+.item-name {
+  font-size: 1.2rem;
+  color: #222;
+  margin-bottom: 5px;
+}
+
+.price {
+  font-size: 1rem;
+  color: #555;
+}
+
+/* Order Summary */
+.order {
+  flex: 1;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.order-summary h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 1.8rem;
+  color: #333;
+}
+
+.order-summary h3 {
+  margin: 10px 0;
+  color: #555;
+}
+
+.order-summary p {
+  font-size: 1rem;
+  color: #777;
+}
+
+.checkout-btn {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  font-size: 1.2rem;
+  color: #fff;
+  background-color: #ff5733;
+  border: none;
+  border-radius: 5px;
+  margin-top: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.checkout-btn:hover {
+  background-color: #e0461b;
+}
+
+/* Responsiveness */
+@media (max-width: 768px) {
+  main {
+      flex-direction: column;
+      align-items: center;
+  }
+
+  .shopping, .order {
+      width: 100%;
+  }
+}
+
+/* Quantity Selector Styling */
+.quantity-selector {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.quantity-btn {
+  width: 30px;
+  height: 30px;
+  border: 1px solid #d8d8d8;
+  background-color: #ffffff;
+  border-radius: 5px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  color: #000000;
+}
+
+.quantity-btn:hover {
+  background-color: #eaeaea;
+}
+
+#quantity {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.remove-btn{
+  font-size: 15px;
+  background-color: #ff0703;
+  color: #ffffff;
+  border: none;
+  padding: 5px;
+  border-radius: 5px;
+  font-weight: 500;
+}
+
+
+/* checkout page */
+
+.checkout-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: white;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Checkout header */
+h1 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 30px;
+}
+
+/* Checkout section (order summary and shipping form) */
+.checkout-section {
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+}
+
+/* Order summary */
+.order-summary {
+  flex: 1;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.order-summary h2 {
+  color: #333;
+  margin-bottom: 10px;
+}
+
+#order-summary td {
+  padding: 10px 0;
+  font-size: 16px;
+  color: #555;
+}
+
+#order-summary tr td:nth-child(2) {
+  text-align: right;
+}
+
+/* Shipping Information */
+.shipping-info {
+  flex: 2;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.shipping-info h2 {
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.shipping-info form label {
+  display: block;
+  font-size: 14px;
+  margin: 10px 0 5px;
+  color: #555;
+}
+
+.shipping-info form input {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.shipping-info form input:focus {
+  border-color: #ff6f61;
+  outline: none;
+}
+
+.shipping-info form button {
+  background-color: #ff6f61;
+  color: white;
+  padding: 15px 0;
+  font-size: 18px;
+  border: none;
+  width: 100%;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.shipping-info form button:hover {
+  background-color: #e55b4a;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .checkout-section {
+      flex-direction: column;
+  }
+}

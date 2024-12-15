@@ -69,6 +69,41 @@ function homePage() {
       <div class="products-container" id="products-container"></div>
     </div>
     <section class="cart-section" id="cart-section"></section>
+
+    <!-- Footer Section -->
+    <div class="footer-container">
+    <div class="footer-top">
+        <div class="footer-logo">
+            <img src="imgs/logo.png" alt="Burger Shop Logo" class="footer-logo-img">
+            <p>Best Burgers in Town!</p>
+        </div>
+        <div class="footer-links">
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Menu</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </div>
+        <div class="footer-contact">
+            <h3>Contact Us</h3>
+            <p>123 Burger Street, Food City</p>
+            <p>Email: support@burgershop.com</p>
+            <p>Phone: (123) 456-7890</p>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2024 Burger Shop. All rights reserved.</p>
+        <div class="social-media">
+            <a href="#" target="_blank" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" target="_blank" class="social-icon"><i class="fab fa-twitter"></i></a>
+            <a href="#" target="_blank" class="social-icon"><i class="fab fa-instagram"></i></a>
+        </div>
+    </div>
+</div>
+
+
   `;
   renderProducts(); // Call the function to render products
 }

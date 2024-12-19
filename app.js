@@ -1,332 +1,173 @@
-const price = [];
-const name = [];
-const cart_section = document.getElementById("cart-section");
-const cart_card = document.getElementById("cart_card");
-const qty = document.getElementById("qty");
+import { returnadminPage } from "./dash.js";
+import { objArray } from "./FoodData.js";
 
-// Sample products array 
-const objArray = [
-  {
-    item_name: "Classic Burger",
-    item_desc: "A juicy beef patty with fresh lettuce, tomato, and cheese.",
-    item_price: "$5.99",
-    item_src: "imgs/classic-burger.jpg",
-    item_id: "a",
-  },
-  {
-    item_name: "Veggie Burger",
-    item_desc: "A juicy veggie patty with fresh lettuce, tomato, and cheese.",
-    item_price: "$5.99",
-    item_src: "imgs/veggie-burger.jpg",
-    item_id: "b",
-  },
-];
 
-// Initialize the homepage after defining the product array
-homePage();
 
+function returnBackButton(){
+  return`
+    <button id="back-BTN" class="back-b">Back</button>
+  `
+
+}
+
+function returntoHome(){
+  document.getElementById("back-BTN").addEventListener("click",homePage)
+}
+
+// Render homepage
 function homePage() {
-  document.getElementById("root").innerHTML = `
-    <div class="header">
-      <div class="headerarea">
-          <div class="logo">
-              <img src="imgs/logo.png" alt="">
-          </div>
-          <ul class="navlinks">
-              <li><button onclick="homePage()">Home</button></li>
-              <li><a href="#">Shop</a></li>
-              <li><a href="#">About</a></li>
-              <li><a href="#">Contact us</a></li>
-          </ul>
-          <ul class="login">
-              <li><a href="#">Login</a></li>
-              <li class="signup"><button onclick="loadCart()">Cart</button></li>
-          </ul>
-      </div>
-
-    
-    <div class="carousel-container">
-        <div class="carousel-images">
-            <img src="imgs/cheese-burger.jpg" alt="Image 1">
-            <img src="imgs/veggie-burger.jpg" alt="Image 2">
-            <img src="imgs/classic-burger.jpg" alt="Image 3">
-        </div>
-
-        <!-- Navigation buttons -->
-        <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
-        <button class="next" onclick="changeSlide(1)">&#10095;</button>
-
-        <!-- Dots for navigation -->
-        <div class="dots-container">
-            <span class="dot" onclick="currentSlide(0)"></span>
-            <span class="dot" onclick="currentSlide(1)"></span>
-            <span class="dot" onclick="currentSlide(2)"></span>
-        </div>
-    </div>
-    </div>
-    <div class="products-section">
+  document.getElementById("root").innerHTML = renderHeader()+`
+  
+  <div class="products-section">
       <h1 class="section-title">Our Delicious Burgers</h1>
       <div class="products-container" id="products-container"></div>
     </div>
     <section class="cart-section" id="cart-section"></section>
-
-    <!-- Footer Section -->
-    <div class="footer-container">
-    <div class="footer-top">
-        <div class="footer-logo">
-            <img src="imgs/logo.png" alt="Burger Shop Logo" class="footer-logo-img">
-            <p>Best Burgers in Town!</p>
-        </div>
-        <div class="footer-links">
-            <h3>Quick Links</h3>
-            <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Menu</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Contact</a></li>
-            </ul>
-        </div>
-        <div class="footer-contact">
-            <h3>Contact Us</h3>
-            <p>123 Burger Street, Food City</p>
-            <p>Email: support@burgershop.com</p>
-            <p>Phone: (123) 456-7890</p>
-        </div>
-    </div>
-    <div class="footer-bottom">
-        <p>&copy; 2024 Burger Shop. All rights reserved.</p>
-        <div class="social-media">
-            <a href="#" target="_blank" class="social-icon"><i class="fab fa-facebook-f"></i></a>
-            <a href="#" target="_blank" class="social-icon"><i class="fab fa-twitter"></i></a>
-            <a href="#" target="_blank" class="social-icon"><i class="fab fa-instagram"></i></a>
-        </div>
-    </div>
-</div>
-
-
+    
   `;
-  renderProducts(); // Call the function to render products
+  document.getElementById("login-btn").addEventListener("click",()=>{
+    document.getElementById("root").innerHTML= login();
+    document.getElementById("submit-btn").addEventListener("click",()=>{
+      document.getElementById("root").innerHTML= renderHeader()+returnadminPage()+returnBackButton()
+      document.getElementById("add-Product").addEventListener("click",()=>{
+        document.getElementById("main-content").innerHTML = `<!-- Add Product Section -->
+        <section id="addProduct" class="dashboard-section">
+          <h2>Add New Product</h2>
+          <form id="add-product-form" enctype="multipart/form-data">
+            <label for="productName">Product Name:</label>
+            <input type="text" id="productName" required>
+        
+            <label for="productPrice">Product Price:</label>
+            <input type="number" id="productPrice" required>
+        
+            <label for="productDesc">Product Description:</label>
+            <textarea id="productDesc" required></textarea>
+        
+            <label for="productImage">Product Image:</label>
+            <input type="file" id="productImage" accept="image/*" onchange="previewImage(event)" required>
+        
+            <!-- Image Preview -->
+            <div id="imagePreviewContainer" style="display: none;">
+              <h3>Image Preview:</h3>
+              <img id="imagePreview" src="" alt="Image Preview" style="width: 100%; max-width: 300px;"/>
+            </div>
+        
+            <button type="submit">Add Product</button>
+          </form>
+        </section>`
+      })
+      document.getElementById("back-BTN").addEventListener("click",()=>{homePage()})
+    })
+  });
+
+
+  renderProducts();
+  
 }
 
-// Function to render products
+homePage();
+
+function renderHeader(){
+  return`
+    <header class="modern-header">
+  <div class="container">
+    <div class="logo">
+      <img src="imgs/logo.png" alt="Website Logo">
+    </div>
+    <nav class="navlinks">
+      <ul>
+        <li><a href="HomePage()">Home</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/shop">Shop</a>
+        </li>
+        <li><button id="login-btn">Login</button></li>
+        <li><a href="/cart.html">Cart</a></li>
+      </ul>
+    </nav>
+    <div class="search-bar">
+      <input type="text" placeholder="Search...">
+      <button type="submit">Search</button>
+    </div>
+    <div class="hamburger" onclick="toggleMenu()">☰</div>
+  </div>
+</header>
+  `
+}
+
+
+// Render products
 function renderProducts() {
   let obj = "";
   objArray.forEach((value) => {
-    let priceNum = parseFloat(value.item_price.replace("$", "")); // Convert price to number
     obj += `
       <div class="product-card">
         <img src="${value.item_src}" alt="${value.item_name}">
         <h3>${value.item_name}</h3>
         <p>${value.item_desc}</p>
-        <p class="price">${value.item_price}</p>
-        <button class="add-to-cart" onclick="addToCart('${value.item_name}', ${priceNum}, '${value.item_src}')">Add to Cart</button>
+        <p class="price">$${value.item_price.toFixed(2)}</p>
+        <button class="add-to-cart" onclick="addToCart('${value.item_name}', ${value.item_price}, '${value.item_src}')">Add to Cart</button>
       </div>
     `;
   });
   document.getElementById("products-container").innerHTML = obj;
 }
 
-// Temporary cart array
-let tempCart = [];
 
-// Function to load cart
-function loadCart() {
-  const root = document.getElementById("root");
-  root.innerHTML = `
-    <header>
-      <h1 class="hname">BURGER CART</h1>
-    </header>
-    <main>
-      <section class="shopping">
-        <div class="content" id="cart-content"></div>
-      </section>
-      <section class="order">
-        <div class="content-order">
-          <div class="order-summary">
-            <h1>ORDER SUMMARY</h1>
-            <h3>Subtotal</h3>
-            <p id="subtotal">$0.00</p>
-            <h3>Shipping</h3>
-            <p id="shipping">Free</p>
-            <h3>Total</h3>
-            <p id="total">$0.00</p>
-            <button class="checkout-btn" onclick="checkout()">Check Out</button>
-          </div>
-        </div>
-      </section>
-    </main>
-  `;
 
-  // Render cart items
-  const cartContent = document.getElementById("cart-content");
-  if (tempCart.length === 0) {
-    cartContent.innerHTML = "<p>Your cart is empty.</p>";
+/* login page for js */
+
+function login() {
+  return`
+  <div class="login-form">
+    <h2>Login</h2>
+    <form id="login-form">
+      <label for="username">Username or Email:</label>
+      <input type="text" id="username" name="username" required>
+      
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" required>
+      
+      <button id="submit-btn" type="submit">Login</button>
+      
+      <div id="error-message" style="display: none; color: red;">Invalid username or password.</div>
+    </form>
+    <p>Don't have an account? <a href="signup.html">Sign up here</a></p>
+  </div>
+  
+  `
+
+
+let users = [
+  { username: "admin", password: "admin123", email: "admin@example.com" },
+  { username: "user1", password: "password1", email: "user1@example.com" },
+];
+
+
+document.getElementById('login-form').addEventListener('submit', function(event) {
+  event.preventDefault(); 
+
+  const username = document.getElementById('username').value;
+  const password = document.getElementById('password').value;
+
+  const user = users.find(u => (u.username === username || u.email === username) && u.password === password);
+
+  if (user) {
+    
+    localStorage.setItem('username', user.username);
+
+    
+    window.location.href = "dashboard.html";
   } else {
-    cartContent.innerHTML = tempCart.map((item, index) => `
-      <div class="cart-card" data-index="${index}">
-        <img src="${item.item_src}" alt="${item.item_name}">
-        <h2 class="item-name">${item.item_name}</h2>
-                <p class="price" id="price-${index}">$${item.item_price}</p>
-        <div class="quantity-selector">
-          <button class="quantity-btn" onclick="updateQuantity(${index}, -1)">−</button>
-          <span id="quantity-${index}">${item.quantity}</span>
-          <button class="quantity-btn" onclick="updateQuantity(${index}, 1)">+</button>
-        </div>
-        <button class="remove-btn" onclick="removeFromCart(${index})">Remove</button>
-      </div>
-    `).join('');
+    
+    document.getElementById('error-message').style.display = "block";
   }
-
-  // Update order summary
-  updateOrderSummary();
+});
 }
 
-// Add to Cart function
-function addToCart(name, price, itemSrc) {
-  const existingItem = tempCart.find(item => item.item_name === name);
-  if (existingItem) {
-    existingItem.quantity += 1; // Increase quantity if item exists
-  } else {
-    tempCart.push({
-      item_name: name,
-      item_price: price,
-      item_src: itemSrc, // Use itemSrc for the image
-      quantity: 1,
-    });
-  }
-  loadCart(); // Re-render the cart with updated items
-}
 
-// Update item quantity and price
-function updateQuantity(index, change) {
-  const item = tempCart[index];
-  if (item.quantity + change > 0) {
-    item.quantity += change;
-    document.getElementById(`quantity-${index}`).textContent = item.quantity;
-    updateOrderSummary();
-  }
-}
+/* cart */
 
-// Remove item from cart
-function removeFromCart(index) {
-  tempCart.splice(index, 1); // Remove item from the array
-  loadCart(); // Re-render cart
-}
+let cartArray = [];
 
-// Update order summary
-function updateOrderSummary() {
-  let subtotal = 0;
-  tempCart.forEach(item => {
-    subtotal += item.item_price * item.quantity;
-  });
 
-  // Update summary
-  document.getElementById("subtotal").textContent = `$${subtotal.toFixed(2)}`;
-  document.getElementById("total").textContent = `$${subtotal.toFixed(2)}`;  // Assuming free shipping
-}
 
-// Checkout function
-function checkout() {
-  const root = document.getElementById("root");
-  root.innerHTML = `
-    <div class="checkout-container">
-        <h1>Checkout</h1>
-
-        <div class="checkout-section">
-            <div class="order-summary">
-                <h2>Order Summary</h2>
-                <table id="order-summary">
-                    <tr>
-                        <td>Subtotal:</td>
-                        <td id="subtotal">$0.00</td>
-                    </tr>
-                    <tr>
-                        <td>Shipping:</td>
-                        <td>Free</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Total:</strong></td>
-                        <td id="total"><strong>$0.00</strong></td>
-                    </tr>
-                </table>
-            </div>
-
-            <div class="shipping-info">
-                <h2>Shipping Information</h2>
-                <form id="shipping-form">
-                    <label for="full-name">Full Name</label>
-                    <input type="text" id="full-name" name="full-name" required>
-
-                    <label for="address">Address</label>
-                    <input type="text" id="address" name="address" required>
-
-                    <label for="city">City</label>
-                    <input type="text" id="city" name="city" required>
-
-                    <label for="postal-code">Postal Code</label>
-                    <input type="text" id="postal-code" name="postal-code" required>
-
-                    <h2>Payment Information</h2>
-                    <label for="card-name">Name on Card</label>
-                    <input type="text" id="card-name" name="card-name" required>
-
-                    <label for="card-number">Card Number</label>
-                    <input type="text" id="card-number" name="card-number" required>
-
-                    <label for="expiry">Expiry Date</label>
-                    <input type="month" id="expiry" name="expiry" required>
-
-                    <label for="cvv">CVV</label>
-                    <input type="text" id="cvv" name="cvv" required>
-
-                    <button type="submit" id="checkout-btn">Complete Purchase</button>
-                </form>
-            </div>
-        </div>
-    </div>
-  `;
-  // Update the checkout information
-  updateOrderSummary();
-}
-
-// image carosol 
-
-let currentIndex = 0;
-        const images = document.querySelectorAll(".carousel-images img");
-        const dots = document.querySelectorAll(".dot");
-
-        function changeSlide(direction) {
-            currentIndex += direction;
-            if (currentIndex < 0) {
-                currentIndex = images.length - 1;
-            }
-            if (currentIndex >= images.length) {
-                currentIndex = 0;
-            }
-            updateCarousel();
-        }
-
-        function currentSlide(index) {
-            currentIndex = index;
-            updateCarousel();
-        }
-
-        function updateCarousel() {
-            const offset = -currentIndex * 100;
-            document.querySelector(".carousel-images").style.transform = `translateX(${offset}%)`;
-
-            dots.forEach((dot, index) => {
-                dot.classList.remove("active");
-                if (index === currentIndex) {
-                    dot.classList.add("active");
-                }
-            });
-        }
-
-        // Auto slide every 3 seconds
-        setInterval(() => {
-            changeSlide(1);
-        }, 1000);
-
-        // Initialize the carousel
-        updateCarousel();

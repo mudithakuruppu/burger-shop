@@ -95,7 +95,7 @@ function renderHeader(){
 }
 
 
-// Render products
+// all products render
 function renderProducts() {
   let obj = "";
   objArray.forEach((value) => {
@@ -111,6 +111,134 @@ function renderProducts() {
   });
   document.getElementById("products-container").innerHTML = obj;
 }
+
+// burgers
+
+function Burgers() {
+  let obj = "";
+  const burgerItems = objArray.filter(item => item.category === "Burgers");
+
+  if (burgerItems.length === 0) {
+    obj = "<p>No burgers available at the moment.</p>";
+  } else {
+    burgerItems.forEach((value) => {
+      obj += `
+        <div class="product-card">
+          <img src="${value.item_src}" alt="${value.item_name}">
+          <h3>${value.item_name}</h3>
+          <p>${value.item_desc}</p>
+          <p class="price">$${value.item_price.toFixed(2)}</p>
+          <button class="add-to-cart" onclick="addToCart('${value.item_name}', ${value.item_price}, '${value.item_src}')">Add to Cart</button>
+        </div>
+      `;
+    });
+  }
+
+  document.getElementById("products-container").innerHTML = obj;
+}
+
+
+/// Submarine products
+
+function Submarine() {
+  let obj = "";
+  const burgerItems = objArray.filter(item => item.category === "Submarines");
+
+  if (burgerItems.length === 0) {
+    obj = "<p>No burgers available at the moment.</p>";
+  } else {
+    burgerItems.forEach((value) => {
+      obj += `
+        <div class="product-card">
+          <img src="${value.item_src}" alt="${value.item_name}">
+          <h3>${value.item_name}</h3>
+          <p>${value.item_desc}</p>
+          <p class="price">$${value.item_price.toFixed(2)}</p>
+          <button class="add-to-cart" onclick="addToCart('${value.item_name}', ${value.item_price}, '${value.item_src}')">Add to Cart</button>
+        </div>
+      `;
+    });
+  }
+
+  document.getElementById("products-container").innerHTML = obj;
+}
+
+// Pasta Products
+
+function pastaProducts() {
+  let obj = "";
+  const burgerItems = objArray.filter(item => item.category === "Pasta");
+
+  if (burgerItems.length === 0) {
+    obj = "<p>No burgers available at the moment.</p>";
+  } else {
+    burgerItems.forEach((value) => {
+      obj += `
+        <div class="product-card">
+          <img src="${value.item_src}" alt="${value.item_name}">
+          <h3>${value.item_name}</h3>
+          <p>${value.item_desc}</p>
+          <p class="price">$${value.item_price.toFixed(2)}</p>
+          <button class="add-to-cart" onclick="addToCart('${value.item_name}', ${value.item_price}, '${value.item_src}')">Add to Cart</button>
+        </div>
+      `;
+    });
+  }
+
+  document.getElementById("products-container").innerHTML = obj;
+}
+
+
+/// Fries and chicken  
+function friesProducts() {
+  let obj = "";
+  const burgerItems = objArray.filter(item => item.category === "Fries");
+
+  if (burgerItems.length === 0) {
+    obj = "<p>No burgers available at the moment.</p>";
+  } else {
+    burgerItems.forEach((value) => {
+      obj += `
+        <div class="product-card">
+          <img src="${value.item_src}" alt="${value.item_name}">
+          <h3>${value.item_name}</h3>
+          <p>${value.item_desc}</p>
+          <p class="price">$${value.item_price.toFixed(2)}</p>
+          <button class="add-to-cart" onclick="addToCart('${value.item_name}', ${value.item_price}, '${value.item_src}')">Add to Cart</button>
+        </div>
+      `;
+    });
+  }
+
+  document.getElementById("products-container").innerHTML = obj;
+}
+
+
+/////  Beverages products
+
+function beverageProducts() {
+  let obj = "";
+  const burgerItems = objArray.filter(item => item.category === "Beverages");
+
+  if (burgerItems.length === 0) {
+    obj = "<p>No burgers available at the moment.</p>";
+  } else {
+    burgerItems.forEach((value) => {
+      obj += `
+        <div class="product-card">
+          <img src="${value.item_src}" alt="${value.item_name}">
+          <h3>${value.item_name}</h3>
+          <p>${value.item_desc}</p>
+          <p class="price">$${value.item_price.toFixed(2)}</p>
+          <button class="add-to-cart" onclick="addToCart('${value.item_name}', ${value.item_price}, '${value.item_src}')">Add to Cart</button>
+        </div>
+      `;
+    });
+  }
+
+  document.getElementById("products-container").innerHTML = obj;
+}
+
 
 
 

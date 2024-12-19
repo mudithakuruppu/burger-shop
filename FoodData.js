@@ -6,6 +6,7 @@ const obj = [
       item_price: 1500.0,
       item_src: "imgs/Classic_Burger.png",
       item_id: "B1001",
+      category: "Burgers",
     },
     {
       item_name: "Turkey Burger",
@@ -13,6 +14,7 @@ const obj = [
       item_price: 1600.0,
       item_src: "imgs/Turkey_Burger.png",
       item_id: "B1002",
+      category: "Burgers",
     },
     {
       item_name: "Chicken Burger",
@@ -20,6 +22,7 @@ const obj = [
       item_price: 1400.0,
       item_src: "imgs/Chicken_Burger.png",
       item_id: "B1003",
+      category: "Burgers",
     },
     {
       item_name: "Cheese Chicken Burger",
@@ -27,6 +30,7 @@ const obj = [
       item_price: 1000.0,
       item_src: "imgs/Cheese_Chicken_Burger.png",
       item_id: "B1004",
+      category: "Burgers",
     },
     {
       item_name: "Crispy Chicken Burger",
@@ -34,6 +38,7 @@ const obj = [
       item_price: 1200.0,
       item_src: "imgs/Crispy_Chicken_Burger.png",
       item_id: "B1005",
+      category: "Burgers",
     },
     {
       item_name: "Special Olive Burger",
@@ -41,6 +46,7 @@ const obj = [
       item_price: 1800.0,
       item_src: "imgs/Special_Olive_Burger.png",
       item_id: "B1006",
+      category: "Burgers",
     },
     {
       item_name: "Bacon Burger",
@@ -48,6 +54,7 @@ const obj = [
       item_price: 650.0,
       item_src: "imgs/Bacon_Burger.png",
       item_id: "B1007",
+      category: "Burgers",
     },
     {
       item_name: "Shawarma Burger",
@@ -55,6 +62,7 @@ const obj = [
       item_price: 800.0,
       item_src: "imgs/Shawarma_Burger.png",
       item_id: "B1008",
+      category: "Burgers",
     },
     {
       item_name: "Double Cheese Burger",
@@ -62,6 +70,7 @@ const obj = [
       item_price: 1250.0,
       item_src: "imgs/Double_Cheese_Burger.png",
       item_id: "B1009",
+      category: "Burgers",
     },
     {
       item_name: "Paneer Burger",
@@ -69,6 +78,7 @@ const obj = [
       item_price: 900.0,
       item_src: "imgs/Paneer_Burger.png",
       item_id: "B1010",
+      category: "Burgers",
     },
   
     // Submarines
@@ -78,6 +88,7 @@ const obj = [
       item_price: 1900.0,
       item_src: "imgs/Double_Cheese_Chicken_Submarine.png",
       item_id: "B10011",
+      category: "Submarines",
     },
     {
       item_name: "MOS Special Submarine",
@@ -85,6 +96,7 @@ const obj = [
       item_price: 3000.0,
       item_src: "imgs/chicken_MOS_Special_Submarine.png",
       item_id: "B10012",
+      category: "Submarines",
     },
     {
       item_name: "Special Horgie Submarine",
@@ -92,6 +104,7 @@ const obj = [
       item_price: 2300.0,
       item_src: "imgs/cheese_Special_Horgie_Submarine.png",
       item_id: "B10013",
+      category: "Submarines",
     },
   
     // Pasta
@@ -101,6 +114,7 @@ const obj = [
       item_price: 1600.0,
       item_src: "imgs/Chicken_Cheese_Pasta.png",
       item_id: "B10018",
+      category: "Pasta",
     },
     {
       item_name: "Chicken Penne Pasta",
@@ -108,6 +122,7 @@ const obj = [
       item_price: 1700.0,
       item_src: "imgs/Chicken_Penne_Pasta.png",
       item_id: "B10019",
+      category: "Pasta",
     },
   
     // Fries
@@ -117,6 +132,7 @@ const obj = [
       item_price: 1200.0,
       item_src: "imgs/Steak_Fries.png",
       item_id: "B10025",
+      category: "Fries",
     },
     {
       item_name: "French Fries",
@@ -124,6 +140,7 @@ const obj = [
       item_price: 800.0,
       item_src: "imgs/French_Fries.png",
       item_id: "B10026",
+      category: "Fries",
     },
   
     // Chicken
@@ -133,6 +150,7 @@ const obj = [
       item_price: 1200.0,
       item_src: "imgs/Fried_Chicken.png",
       item_id: "B10028",
+      category: "Chicken",
     },
     {
       item_name: "BBQ Chicken",
@@ -140,6 +158,7 @@ const obj = [
       item_price: 2100.0,
       item_src: "imgs/BBQ_Chicken.png",
       item_id: "B10029",
+      category: "Chicken",
     },
   
     // Beverages
@@ -149,6 +168,7 @@ const obj = [
       item_price: 990.0,
       item_src: "imgs/Pepsi_330ml.png",
       item_id: "B10032",
+      category: "Beverages",
     },
     {
       item_name: "Coca-Cola (330ml)",
@@ -156,8 +176,9 @@ const obj = [
       item_price: 1230.0,
       item_src: "imgs/CocaCola_330ml.png",
       item_id: "B10033",
+      category: "Beverages",
     },
   ];
   
-
   export let objArray = obj;
+  
